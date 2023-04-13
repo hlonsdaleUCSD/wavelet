@@ -12,13 +12,26 @@ class Handler implements URLHandler {
         } else if (url.getPath().equals("/clear")) {
             strs.clear();
             return String.format("All strings cleared");
-        } else {
+        } 
+        else {
             System.out.println("Path: " + url.getPath());
             if (url.getPath().contains("/add")) {
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("s")) {
                     strs.add(parameters[1]);
                     String ret = parameters[1] + " added! New list of strings: " + strs.toString();
+                    return ret;
+                }
+            }
+            if (url.getPath().contains("/search")) {
+                String[] parameters = url.getQuery().split("=");
+                if (parameters[0].equals("s")) {
+                    String ret = "";
+                    for(String str : strs){
+                        if(str.contains(parameters[1])){
+                            ret = ret + "  " + str;
+                        }
+                    }
                     return ret;
                 }
             }
