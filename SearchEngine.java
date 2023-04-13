@@ -8,7 +8,7 @@ class Handler implements URLHandler {
 
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
-            return String.format("List of strings:", strs.toString());
+            return "List of strings:"+ strs.toString();
         } else if (url.getPath().equals("/clear")) {
             strs.clear();
             return String.format("All strings cleared");
